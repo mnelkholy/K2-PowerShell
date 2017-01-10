@@ -1,0 +1,9 @@
+[System.Console]::WriteLine("Sample code to start a K2 process")
+Add-Type -AssemblyName ("SourceCode.Workflow.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=16a2c5aaaa1b130d")
+$conn = New-Object -TypeName SourceCode.Workflow.Client.Connection
+$conn.Open("localhost")
+$pi = $conn.CreateProcessInstance("Folder\ProcessName")
+#Set Process Folio
+$pi.Folio="Hello world"
+$conn.StartProcessInstance($pi)
+$conn.Close
